@@ -19,6 +19,15 @@ jobs:
         run: swift test
       - name: Build Universal 2 release
         run: ./scripts/build-release.sh
+      - name: Verify release assets
+        run: |
+          lipo -verify_arch arm64 x86_64 dist/dmg-root/ClariDiff.app/Contents/MacOS/ClariDiff
+          lipo -verify_arch arm64 x86_64 dist/claridiff-1.0.0-macos-universal
+          codesign --verify --deep --strict dist/dmg-root/ClariDiff.app
+          codesign --verify --strict dist/claridiff-1.0.0-macos-universal
+          hdiutil verify dist/ClariDiff-1.0.0-Universal.dmg
+          cd dist
+          shasum -a 256 -c SHA256SUMS
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
