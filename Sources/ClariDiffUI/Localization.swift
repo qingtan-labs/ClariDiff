@@ -1,0 +1,123 @@
+import Foundation
+
+enum AppLanguage: String, CaseIterable, Identifiable {
+    case zh = "中文"
+    case en = "EN"
+    var id: String { rawValue }
+}
+
+enum CopyKey: String {
+    case sourceA, sourceB, semanticDiff, pasteOrDrop, chooseFile, clipboard, format
+    case compare, rules, export, tree, report, allChanges, added, removed, modified
+    case search, noDifferences, fixInput, copied, path, before, after, ignored
+    case settings, ignorePaths, ignoreHint, arrayRules, arrayHint, numberTolerance
+    case absoluteTolerance, relativeTolerance, stringRules, trimWhitespace, ignoreCase
+    case normalizeDates, numericStrings, cancel, apply, changes, dropHere, invalidInput
+    case localOnly, emptyState, saveReport, copyPointer, unordered, position, keyed
+}
+
+extension AppLanguage {
+    func text(_ key: CopyKey) -> String {
+        switch (self, key) {
+        case (.zh, .sourceA): return "内容 A"
+        case (.zh, .sourceB): return "内容 B"
+        case (.zh, .semanticDiff): return "语义差异"
+        case (.zh, .pasteOrDrop): return "粘贴内容，或将文件拖到这里"
+        case (.zh, .chooseFile): return "选择文件"
+        case (.zh, .clipboard): return "剪贴板"
+        case (.zh, .format): return "格式化"
+        case (.zh, .compare): return "比较"
+        case (.zh, .rules): return "规则"
+        case (.zh, .export): return "导出"
+        case (.zh, .tree): return "树形"
+        case (.zh, .report): return "报告"
+        case (.zh, .allChanges): return "全部"
+        case (.zh, .added): return "新增"
+        case (.zh, .removed): return "删除"
+        case (.zh, .modified): return "修改"
+        case (.zh, .search): return "搜索路径"
+        case (.zh, .noDifferences): return "没有实质差异"
+        case (.zh, .fixInput): return "修复两侧输入后即可比较"
+        case (.zh, .copied): return "已复制"
+        case (.zh, .path): return "路径"
+        case (.zh, .before): return "原值"
+        case (.zh, .after): return "新值"
+        case (.zh, .ignored): return "已忽略"
+        case (.zh, .settings): return "语义比较规则"
+        case (.zh, .ignorePaths): return "忽略路径"
+        case (.zh, .ignoreHint): return "每行一个结构路径，支持 * 通配符"
+        case (.zh, .arrayRules): return "数组规则"
+        case (.zh, .arrayHint): return "每行一条，例如 /users=id 或 /roles=ignore"
+        case (.zh, .numberTolerance): return "数字误差"
+        case (.zh, .absoluteTolerance): return "绝对误差"
+        case (.zh, .relativeTolerance): return "百分比误差"
+        case (.zh, .stringRules): return "字符串归一化"
+        case (.zh, .trimWhitespace): return "忽略首尾空格"
+        case (.zh, .ignoreCase): return "忽略大小写"
+        case (.zh, .normalizeDates): return "统一 ISO 日期时区"
+        case (.zh, .numericStrings): return "数字字符串等同数字"
+        case (.zh, .cancel): return "取消"
+        case (.zh, .apply): return "应用规则"
+        case (.zh, .changes): return "项变化"
+        case (.zh, .dropHere): return "松开以读取文件"
+        case (.zh, .invalidInput): return "无法解析输入"
+        case (.zh, .localOnly): return "完全本地 · 数据不上传"
+        case (.zh, .emptyState): return "粘贴或拖入两份内容开始比较"
+        case (.zh, .saveReport): return "导出 Markdown 报告"
+        case (.zh, .copyPointer): return "复制变化路径"
+        case (.zh, .unordered): return "忽略顺序"
+        case (.zh, .position): return "按位置"
+        case (.zh, .keyed): return "按字段匹配"
+
+        case (.en, .sourceA): return "Source A"
+        case (.en, .sourceB): return "Source B"
+        case (.en, .semanticDiff): return "Semantic Diff"
+        case (.en, .pasteOrDrop): return "Paste content or drop a file here"
+        case (.en, .chooseFile): return "Choose File"
+        case (.en, .clipboard): return "Clipboard"
+        case (.en, .format): return "Format"
+        case (.en, .compare): return "Compare"
+        case (.en, .rules): return "Rules"
+        case (.en, .export): return "Export"
+        case (.en, .tree): return "Tree"
+        case (.en, .report): return "Report"
+        case (.en, .allChanges): return "All"
+        case (.en, .added): return "Added"
+        case (.en, .removed): return "Removed"
+        case (.en, .modified): return "Modified"
+        case (.en, .search): return "Search paths"
+        case (.en, .noDifferences): return "No semantic differences"
+        case (.en, .fixInput): return "Fix the inputs on both sides to compare"
+        case (.en, .copied): return "Copied"
+        case (.en, .path): return "Path"
+        case (.en, .before): return "Before"
+        case (.en, .after): return "After"
+        case (.en, .ignored): return "Ignored"
+        case (.en, .settings): return "Semantic comparison rules"
+        case (.en, .ignorePaths): return "Ignored paths"
+        case (.en, .ignoreHint): return "One structured path per line; * wildcards supported"
+        case (.en, .arrayRules): return "Array rules"
+        case (.en, .arrayHint): return "One per line, e.g. /users=id or /roles=ignore"
+        case (.en, .numberTolerance): return "Number tolerance"
+        case (.en, .absoluteTolerance): return "Absolute"
+        case (.en, .relativeTolerance): return "Relative percent"
+        case (.en, .stringRules): return "String normalization"
+        case (.en, .trimWhitespace): return "Trim whitespace"
+        case (.en, .ignoreCase): return "Ignore case"
+        case (.en, .normalizeDates): return "Normalize ISO date timezones"
+        case (.en, .numericStrings): return "Equate numeric strings and numbers"
+        case (.en, .cancel): return "Cancel"
+        case (.en, .apply): return "Apply Rules"
+        case (.en, .changes): return "changes"
+        case (.en, .dropHere): return "Drop to read the file"
+        case (.en, .invalidInput): return "Unable to parse input"
+        case (.en, .localOnly): return "100% local · nothing uploaded"
+        case (.en, .emptyState): return "Paste or drop two items to begin"
+        case (.en, .saveReport): return "Export Markdown Report"
+        case (.en, .copyPointer): return "Copy change path"
+        case (.en, .unordered): return "Ignore order"
+        case (.en, .position): return "By position"
+        case (.en, .keyed): return "Match by field"
+        }
+    }
+}
