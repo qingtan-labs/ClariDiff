@@ -14,7 +14,7 @@ let package = Package(
         .executable(name: "ClariDiffApp", targets: ["ClariDiffApp"])
     ],
     dependencies: [
-        .package(url: "https://github.com/jpsim/Yams.git", from: "5.0.6")
+        .package(url: "https://github.com/jpsim/Yams.git", exact: "5.4.0")
     ],
     targets: [
         .target(
