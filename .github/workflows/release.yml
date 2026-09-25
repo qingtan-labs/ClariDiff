@@ -21,8 +21,8 @@ jobs:
         run: ./scripts/build-release.sh
       - name: Verify release assets
         run: |
-          lipo -verify_arch arm64 x86_64 dist/dmg-root/ClariDiff.app/Contents/MacOS/ClariDiff
-          lipo -verify_arch arm64 x86_64 dist/claridiff-1.0.0-macos-universal
+          lipo dist/dmg-root/ClariDiff.app/Contents/MacOS/ClariDiff -verify_arch arm64 x86_64
+          lipo dist/claridiff-1.0.0-macos-universal -verify_arch arm64 x86_64
           codesign --verify --deep --strict dist/dmg-root/ClariDiff.app
           codesign --verify --strict dist/claridiff-1.0.0-macos-universal
           hdiutil verify dist/ClariDiff-1.0.0-Universal.dmg
